@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VidyaSetu | Adaptive Learning for Indian Classes 6 to 10</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Hackathon Top Ribbon -->
+  <div class="hackathon-ribbon">
+    <div class="container">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span class="ribbon-tag">Code Kernel '26</span>
+        <span>Decode Round (21-24 Oct 2026) · In collaboration with <strong>Canvas Classes</strong></span>
+      </div>
+      <div style="display:flex; align-items:center; gap:16px;">
+        <span>Supported by <strong>MyStartupWave</strong> & <strong>Unstop</strong></span>
+        <span style="opacity:0.8;">X-Kernel, GRIET Hyderabad</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="app-header">
+    <div class="container">
+      <div class="nav-inner">
+        <!-- Brand / Logo -->
+        <a href="#home" class="brand-badge">
+          <div class="brand-logo">VS</div>
+          <div class="brand-text">
+            <h1>VidyaSetu <span style="font-weight:400; color:#4f46e5;">विद्यासेतु</span></h1>
+            <div class="sub">Adaptive Learning · Classes 6 to 10</div>
+          </div>
+        </a>
+
+        <!-- Navigation Tabs -->
+        <ul class="nav-links">
+          <li><button class="nav-tab-btn active" data-tab="home"><span>🏠</span> Overview</button></li>
+          <li><button class="nav-tab-btn" data-tab="student"><span>🎓</span> Student App (Learn·Solve·Test)</button></li>
+          <li><button class="nav-tab-btn" data-tab="teacher"><span>👩‍🏫</span> Teacher Hub (GuruSetu)</button></li>
+          <li><button class="nav-tab-btn" data-tab="simulator"><span>⚡</span> Adaptive Simulator</button></li>
+          <li><button class="nav-tab-btn" data-tab="submission"><span>📑</span> Code Kernel '26 Deck</button></li>
+        </ul>
+
+        <!-- Header Controls (Language + Low Data Mode) -->
+        <div class="header-controls">
+          <select id="lang-select" class="control-pill" aria-label="Select Language">
+            <option value="en">🌐 English</option>
+            <option value="hinglish">🇮🇳 Hinglish / हिन्दी</option>
+            <option value="te">🇮🇳 తెలుగు (Telugu)</option>
+          </select>
+
+          <button id="toggle-low-data" class="control-pill" title="Toggle Low-Bandwidth / 2G Mode">
+            <span>⚡ Standard Data</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- TAB 1: OVERVIEW / HOME                     -->
+  <!-- ========================================== -->
+  <main id="tab-home" class="tab-content active">
+    <div class="container">
+      <!-- Hero Banner -->
+      <section class="hero-banner">
+        <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(79,70,229,0.1); padding:4px 12px; border-radius:30px; color:#4f46e5; font-size:0.85rem; font-weight:700; margin-bottom:14px;">
+          <span>🎯 Problem Statement #1</span>
+          <span>•</span>
+          <span>X-Kernel Decode Round</span>
+        </div>
+        <h2 class="hero-title" id="hero-title-text">
+          One pace does not fit every learner.<br>
+          <span class="highlight">Make learning adapt to every student.</span>
+        </h2>
+        <p class="hero-subtitle" id="hero-desc-text">
+          Every Indian classroom has 40–60 students learning at different speeds. VidyaSetu diagnoses quiet foundational gaps in Classes 6–10, adapts across <strong>Learn, Solve, and Test</strong>, and puts school teachers at the center.
+        </p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="document.querySelector('[data-tab=\'student\']').click()">
+            <span>🚀 Try Student Experience</span>
+          </button>
+          <button class="btn btn-secondary" onclick="document.querySelector('[data-tab=\'teacher\']').click()">
+            <span>👩‍🏫 View Teacher Command Hub</span>
+          </button>
+          <button class="btn btn-secondary" onclick="document.querySelector('[data-tab=\'simulator\']').click()">
+            <span>⚡ Run Adaptation Simulator</span>
+          </button>
+        </div>
+
+        <!-- Metric Badges -->
+        <div class="hero-stats">
+          <div class="stat-card">
+            <div class="val">Classes 6–10</div>
+            <div class="lbl">Ages 11 to 16 (NCERT & State Boards)</div>
+          </div>
+          <div class="stat-card">
+            <div class="val">3-Part Loop</div>
+            <div class="lbl">Learn · Solve · Test Adaptation</div>
+          </div>
+          <div class="stat-card">
+            <div class="val">100% Teacher-First</div>
+            <div class="lbl">Empowers, never sidelines educators</div>
+          </div>
+          <div class="stat-card">
+            <div class="val">Low-Data & Offline</div>
+            <div class="lbl">Works on 2G & Shared Family Phones</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- The Core Problem (From Page 1 & 2 of Hackathon PDF) -->
+      <section style="margin-bottom:36px;">
+        <div style="text-align:center; max-width:680px; margin:0 auto 28px auto;">
+          <div class="badge badge-danger" style="margin-bottom:8px;">The Quiet Gap</div>
+          <h3 style="font-size:1.8rem; font-weight:800; color:#1e1b4b;">Why One Pace Fails in Indian Classrooms</h3>
+          <p style="color:#64748b; font-size:0.95rem; margin-top:6px;">
+            Tests usually happen at the end of a chapter. By the time a gap shows up, the class has already moved on.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card" style="border-top:4px solid #ef4444;">
+            <div style="font-size:2rem; margin-bottom:10px;">⚡</div>
+            <h4 style="font-size:1.1rem; font-weight:700; margin-bottom:8px; color:#1e293b;">Fast Learners Get Bored</h4>
+            <p style="color:#64748b; font-size:0.9rem;">
+              Students who grasp concepts immediately are forced to sit through repetitive drills, losing their natural curiosity and drive.
+            </p>
+          </div>
+
+          <div class="card" style="border-top:4px solid #f59e0b;">
+            <div style="font-size:2rem; margin-bottom:10px;">📉</div>
+            <h4 style="font-size:1.1rem; font-weight:700; margin-bottom:8px; color:#1e293b;">Struggling Students Fall Behind</h4>
+            <p style="color:#64748b; font-size:0.9rem;">
+              A single missed concept in Class 6 (like negative integers or fractions) compounds quietly into failure in Class 9/10 algebra.
+            </p>
+          </div>
+
+          <div class="card" style="border-top:4px solid #6366f1;">
+            <div style="font-size:2rem; margin-bottom:10px;">🔍</div>
+            <h4 style="font-size:1.1rem; font-weight:700; margin-bottom:8px; color:#1e293b;">Nobody Really Knows Early</h4>
+            <p style="color:#64748b; font-size:0.9rem;">
+              In a room of 50 students, teachers cannot diagnose individual micro-misconceptions until summative report cards arrive too late.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Three Parts of Studying (From Page 3 of Hackathon PDF) -->
+      <section style="margin-bottom:36px;">
+        <div style="background:#ffffff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:32px;">
+          <div style="text-align:center; max-width:680px; margin:0 auto 24px auto;">
+            <div class="badge badge-primary" style="margin-bottom:8px;">The 3-Part Adaptive Framework</div>
+            <h3 style="font-size:1.8rem; font-weight:800; color:#1e1b4b;">Adaptive Across All Three Parts of Studying</h3>
+            <p style="color:#64748b; font-size:0.95rem;">
+              Adaptive learning is not just about spitting random quiz questions. True mastery requires adaptation across <strong>learning</strong>, <strong>solving</strong>, and <strong>testing</strong>.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <div style="background:#f8fafc; padding:20px; border-radius:var(--radius-md); border-left:4px solid #4f46e5;">
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+                <span style="font-size:1.5rem;">📖</span>
+                <span class="badge badge-primary">Part 01</span>
+              </div>
+              <h4 style="font-weight:800; font-size:1.1rem; color:#1e1b4b;">1. LEARN</h4>
+              <p style="color:#64748b; font-size:0.88rem; margin:8px 0 12px 0;">
+                Adapts concept explanations: Visual analogies (taraazu balance), bilingual audio, and auto-unfolding prerequisite bridges for older missed grades.
+              </p>
+              <ul style="font-size:0.82rem; color:#475569; padding-left:18px;">
+                <li>Bilingual Hindi / Telugu toggle</li>
+                <li>Interactive visual models</li>
+                <li>Prerequisite micro-bridge</li>
+              </ul>
+            </div>
+
+            <div style="background:#f8fafc; padding:20px; border-radius:var(--radius-md); border-left:4px solid #0ea5e9;">
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+                <span style="font-size:1.5rem;">🧩</span>
+                <span class="badge badge-primary">Part 02</span>
+              </div>
+              <h4 style="font-weight:800; font-size:1.1rem; color:#1e1b4b;">2. SOLVE</h4>
+              <p style="color:#64748b; font-size:0.88rem; margin:8px 0 12px 0;">
+                Dynamic difficulty adjustment with a 3-step scaffolded Hint Ladder. Detects <em>why</em> a student made an error instead of just marking it wrong.
+              </p>
+              <ul style="font-size:0.82rem; color:#475569; padding-left:18px;">
+                <li>3-Tier Hint Ladder</li>
+                <li>Misconception Diagnosis</li>
+                <li>Step-down remediation</li>
+              </ul>
+            </div>
+
+            <div style="background:#f8fafc; padding:20px; border-radius:var(--radius-md); border-left:4px solid #10b981;">
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+                <span style="font-size:1.5rem;">📊</span>
+                <span class="badge badge-success">Part 03</span>
+              </div>
+              <h4 style="font-weight:800; font-size:1.1rem; color:#1e1b4b;">3. TEST</h4>
+              <p style="color:#64748b; font-size:0.88rem; margin:8px 0 12px 0;">
+                Low-stakes 5-minute diagnostic pulses that continuously calibrate the student's Bayesian Knowledge Tracing profile without exam anxiety.
+              </p>
+              <ul style="font-size:0.82rem; color:#475569; padding-left:18px;">
+                <li>Dynamic next-question routing</li>
+                <li>Real-time Mastery Radar</li>
+                <li>Zero-stress formative checks</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Built for India & Teacher Centricity (Page 2 & 3 PDF requirements) -->
+      <section class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title"><span>🇮🇳</span> Built for the Indian Context</h4>
+            <span class="badge badge-primary">Core Pillar</span>
+          </div>
+          <p style="color:#475569; font-size:0.92rem; margin-bottom:14px;">
+            Most adaptive apps are built for Western classrooms with 1:1 iPad access. VidyaSetu is designed from ground up for Indian realities:
+          </p>
+          <div style="display:flex; flex-direction:column; gap:10px; font-size:0.88rem;">
+            <div style="display:flex; gap:10px; align-items:flex-start;">
+              <span style="color:#10b981; font-weight:800;">✓</span>
+              <div><strong>Shared Family Phones:</strong> Works asynchronously with SMS/WhatsApp sync when parents return home from work in the evening.</div>
+            </div>
+            <div style="display:flex; gap:10px; align-items:flex-start;">
+              <span style="color:#10b981; font-weight:800;">✓</span>
+              <div><strong>Bilingual Code-Switching:</strong> Students learning in English medium who speak Hindi or Telugu at home can flip terms seamlessly.</div>
+            </div>
+            <div style="display:flex; gap:10px; align-items:flex-start;">
+              <span style="color:#10b981; font-weight:800;">✓</span>
+              <div><strong>Low Bandwidth / 2G Resilient:</strong> Ultra-lightweight payloads (&lt;80KB) with instant offline cache and printable paper worksheets.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title"><span>👩‍🏫</span> Empowering the School Teacher</h4>
+            <span class="badge badge-success">Guiding Question</span>
+          </div>
+          <p style="color:#475569; font-size:0.92rem; margin-bottom:14px;">
+            Coaching centres and generic chatbots sideline school teachers. VidyaSetu restores teachers as the inspiring mentors of the classroom:
+          </p>
+          <div style="display:flex; flex-direction:column; gap:10px; font-size:0.88rem;">
+            <div style="display:flex; gap:10px; align-items:flex-start;">
+              <span style="color:#10b981; font-weight:800;">✓</span>
+              <div><strong>Quiet Gap Radar:</strong> Alerts teachers 2 weeks before exams which students need help with which specific sub-concept.</div>
+            </div>
+            <div style="display:flex; gap:10px; align-items:flex-start;">
+              <span style="color:#10b981; font-weight:800;">✓</span>
+              <div><strong>1-Click Differentiated Tiering:</strong> Auto-sorts 50 students into Foundation, Grade-Level, and Olympiad challenge groups.</div>
+            </div>
+            <div style="display:flex; gap:10px; align-items:flex-start;">
+              <span style="color:#10b981; font-weight:800;">✓</span>
+              <div><strong>Printable Offline Worksheets:</strong> Generates targeted practice sheets with QR answer keys for no-device classrooms.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- TAB 2: STUDENT APP (Learn, Solve, Test)    -->
+  <!-- ========================================== -->
+  <main id="tab-student" class="tab-content">
+    <div class="container">
+      <!-- Grade & Subject Selector -->
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:20px; background:#ffffff; padding:16px 20px; border-radius:var(--radius-md); border:1px solid var(--border);">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="font-weight:700; color:#1e1b4b; font-size:0.95rem;">Curriculum:</span>
+          <select class="control-pill" style="font-weight:700;">
+            <option>Class 8 (CBSE / NCERT)</option>
+            <option>Class 6 (Foundations)</option>
+            <option>Class 7 (Pre-algebra)</option>
+            <option>Class 9 (Advanced)</option>
+            <option>Class 10 (Board Target)</option>
+          </select>
+          <select class="control-pill" style="font-weight:700;">
+            <option>📐 Mathematics</option>
+            <option>🔬 Science (Physics & Chem)</option>
+          </select>
+        </div>
+        <div style="font-size:0.85rem; color:#64748b; font-weight:600;">
+          Chapter 2: <strong style="color:#4f46e5;">Linear Equations in One Variable</strong>
+        </div>
+      </div>
+
+      <!-- 3-Stage Stepper Navigation (Learn -> Solve -> Test) -->
+      <div class="stage-stepper">
+        <button class="step-btn active" data-step="learn">
+          <span class="step-num">1</span>
+          <span>LEARN (Concept Breakdown)</span>
+        </button>
+        <button class="step-btn" data-step="solve">
+          <span class="step-num">2</span>
+          <span>SOLVE (Adaptive Practice)</span>
+        </button>
+        <button class="step-btn" data-step="test">
+          <span class="step-num">3</span>
+          <span>TEST (Diagnostic Pulse)</span>
+        </button>
+      </div>
+
+      <!-- PART 1: LEARN SECTION -->
+      <section id="step-section-learn" class="step-section active">
+        <div class="grid-2">
+          <!-- Concept & Visual Model -->
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title"><span>⚖</span> The Balance Scale Analogy (Taraazu)</h4>
+              <button class="btn btn-secondary btn-sm" id="btn-speak-concept">
+                <span>🔊 Listen (Audio)</span>
+              </button>
+            </div>
+            
+            <p id="learn-explanation-text" style="color:#334155; font-size:0.95rem; margin-bottom:14px;">
+              An equation is like a balanced grocery weighing scale (Taraazu). Whatever operation you perform on one side, you must perform exactly the same on the other side to keep it balanced.
+            </p>
+
+            <div style="background:#eef2ff; padding:12px; border-radius:8px; border-left:4px solid #4f46e5; margin-bottom:16px;">
+              <strong style="color:#312e81; font-size:0.88rem;">💡 Golden Rule:</strong>
+              <div id="learn-rule-text" style="font-size:0.85rem; color:#4338ca; margin-top:2px;">
+                Treat both sides equally. If you remove 3 from the left side, also remove 3 from the right side.
+              </div>
+            </div>
+
+            <!-- Interactive Visual Scale Simulation -->
+            <div class="scale-wrapper">
+              <div style="font-weight:700; color:#1e293b; margin-bottom:8px;">Interactive Equation: 2x + 3 = 11</div>
+              <div class="scale-beam" id="scale-beam-bar">
+                <div class="scale-pan" id="scale-pan-left"></div>
+                <div style="width:16px; height:60px; background:#64748b; border-radius:4px 4px 0 0;"></div>
+                <div class="scale-pan" id="scale-pan-right"></div>
+              </div>
+              <div id="scale-status-message" style="margin:10px 0; font-size:0.88rem;"></div>
+
+              <div style="display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-top:10px;">
+                <button class="btn btn-secondary btn-sm" id="scale-sub-3">Step 1: Subtract 3 from both sides</button>
+                <button class="btn btn-secondary btn-sm" id="scale-div-2" disabled>Step 2: Divide both sides by 2</button>
+                <button class="btn btn-secondary btn-sm" id="scale-reset">↺ Reset Scale</button>
+              </div>
+            </div>
+
+            <div style="margin-top:18px;">
+              <button class="btn btn-secondary btn-sm" id="btn-prereq-bridge" style="width:100%;">
+                🔍 Need a Class 6/7 Concept Bridge?
+              </button>
+              <div id="prereq-bridge-content" style="display:none; margin-top:12px; background:#fffbeb; border:1px solid #fef3c7; padding:14px; border-radius:8px; font-size:0.86rem; color:#92400e;">
+                <strong>Class 6 Review: What is a Variable?</strong><br>
+                A variable (like <em>x</em>) is just an unknown mystery box! If 2 mystery boxes plus 3 kg equals 11 kg, each mystery box must weigh 4 kg.
+              </div>
+            </div>
+          </div>
+
+          <!-- Real-world Application & Next Step Nudge -->
+          <div class="card" style="display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <div class="card-header">
+                <h4 class="card-title"><span>🇮🇳</span> Real-World Indian Context Example</h4>
+                <span class="badge badge-warning">Everyday Math</span>
+              </div>
+              
+              <div style="background:#f8fafc; padding:16px; border-radius:10px; border:1px solid var(--border); margin-bottom:16px;">
+                <div style="font-weight:700; color:#1e293b; margin-bottom:6px;">Kirana Shop Scenario:</div>
+                <p style="color:#475569; font-size:0.9rem;">
+                  Aarav went to the local kirana store. He bought <strong>2 packets of biscuits</strong> (each costing ₹x) and a <strong>₹3 dairy milk candy</strong>. He gave the shopkeeper a ₹11 coin.
+                </p>
+                <div style="margin-top:10px; font-weight:800; color:#4f46e5; font-size:1.05rem;">
+                  Equation: 2x + 3 = 11
+                </div>
+              </div>
+
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <div style="font-size:0.88rem; color:#475569;">
+                  <strong>Why does this work?</strong> In daily life, Aarav pays ₹3 first, leaving ₹8 for 2 biscuit packets (₹4 each). Algebra is just formalizing your natural daily logic!
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:24px; padding-top:16px; border-top:1px solid var(--border); text-align:right;">
+              <button class="btn btn-primary" onclick="document.querySelector('[data-step=\'solve\']').click()">
+                Ready to Solve Problems? Go to Part 2 ➔
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 2: SOLVE SECTION -->
+      <section id="step-section-solve" class="step-section">
+        <div class="grid-2">
+          <!-- Active Adaptive Question Box -->
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title"><span>🧩</span> Adaptive Practice Engine</h4>
+              <span id="solve-level-badge" class="badge badge-warning">Tier 2: Standard NCERT</span>
+            </div>
+
+            <div style="background:#f8fafc; border:1px solid var(--border); border-radius:12px; padding:20px; text-align:center; margin-bottom:18px;">
+              <div id="solve-equation-display" style="font-size:2rem; font-weight:800; color:#1e1b4b; letter-spacing:0.02em;">
+                3x - 4 = 11
+              </div>
+              <p id="solve-prompt-text" style="color:#64748b; font-size:0.9rem; margin-top:8px;">
+                Solve for x. Remember: First undo subtraction, then undo multiplication.
+              </p>
+            </div>
+
+            <!-- Options Container -->
+            <div id="solve-options-container" class="options-grid"></div>
+
+            <!-- Feedback & Misconception Box -->
+            <div id="solve-feedback-box" style="display:none; margin-top:14px;"></div>
+          </div>
+
+          <!-- Hint Ladder & Diagnostic Guidance -->
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title"><span>🪜</span> Scaffolded Hint Ladder</h4>
+              <button class="btn btn-secondary btn-sm" id="btn-reveal-hint">Get Next Hint (3 left)</button>
+            </div>
+            
+            <p style="color:#64748b; font-size:0.88rem; margin-bottom:14px;">
+              Stuck? Our 3-stage hint ladder teaches conceptual reasoning rather than simply giving you the answer.
+            </p>
+
+            <div class="hint-ladder">
+              <div class="hint-step hint-1" id="hint-1">
+                <strong>Hint 1 (Conceptual Nudge):</strong> First isolate the 3x term. What is the inverse operation of - 4?
+              </div>
+              <div class="hint-step hint-2" id="hint-2">
+                <strong>Hint 2 (Visual / Structural Step):</strong> Add 4 to both sides: 3x = 11 + 4 = 15.
+              </div>
+              <div class="hint-step hint-3" id="hint-3">
+                <strong>Hint 3 (Final Execution):</strong> Now divide both sides by 3 to isolate x: x = 15 / 3 = 5.
+              </div>
+            </div>
+
+            <div style="margin-top:20px; padding:14px; background:#f8fafc; border-radius:8px; border:1px solid var(--border);">
+              <div style="font-size:0.85rem; font-weight:700; color:#1e293b; margin-bottom:4px;">Diagnostic Misconception Tracing:</div>
+              <p style="font-size:0.82rem; color:#64748b;">
+                Notice our system detects if you added instead of subtracted, or swapped division with multiplication, offering immediate corrective guidance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 3: TEST SECTION -->
+      <section id="step-section-test" class="step-section">
+        <div class="grid-2">
+          <!-- Diagnostic Assessment Box -->
+          <div class="card" id="diagnostic-container"></div>
+
+          <!-- Real-time Knowledge Mastery Radar -->
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title"><span>📊</span> Live Concept Mastery Profile</h4>
+              <span class="badge badge-success">Calibrated Real-time</span>
+            </div>
+            <p style="color:#64748b; font-size:0.88rem; margin-bottom:12px;">
+              Continuous Bayesian Knowledge Tracing across 5 core prerequisite dimensions:
+            </p>
+            <div style="display:flex; justify-content:center; align-items:center; padding:10px 0;">
+              <canvas id="mastery-radar-canvas" width="280" height="240"></canvas>
+            </div>
+            <div style="font-size:0.82rem; color:#475569; text-align:center;">
+              High mastery in <strong>Balancing</strong> and <strong>Equations</strong>. Low-stakes diagnostic prevents chapter-end surprises.
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- TAB 3: TEACHER COMMAND HUB (GuruSetu)       -->
+  <!-- ========================================== -->
+  <main id="tab-teacher" class="tab-content">
+    <div class="container">
+      <!-- Teacher Top Cockpit Bar -->
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; margin-bottom:24px; background:#ffffff; padding:20px; border-radius:var(--radius-md); border:1px solid var(--border);">
+        <div>
+          <div style="display:inline-flex; align-items:center; gap:8px; background:#eef2ff; color:#4f46e5; padding:3px 10px; border-radius:20px; font-size:0.75rem; font-weight:700; margin-bottom:6px;">
+            TEACHER COCKPIT
+          </div>
+          <h2 style="font-size:1.4rem; font-weight:800; color:#1e1b4b;">Class 8-B · Mathematics (42 Students)</h2>
+          <div style="color:#64748b; font-size:0.88rem;">Teacher: <strong>Mrs. Sunita Raman</strong> · Griet Model High School, Hyderabad</div>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn btn-primary" id="btn-auto-group">
+            <span>👥 1-Click Differentiated Groups</span>
+          </button>
+          <button class="btn btn-secondary" id="btn-generate-worksheet">
+            <span>🖨 Printable Offline Worksheet</span>
+          </button>
+          <button class="btn btn-secondary" id="btn-copy-whatsapp">
+            <span>📱 Copy WhatsApp Broadcast</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quiet Gap Early Warning Banner -->
+      <div style="background:#fef2f2; border:1px solid #fecaca; border-left:6px solid #ef4444; border-radius:var(--radius-md); padding:16px 20px; margin-bottom:24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+        <div style="display:flex; align-items:flex-start; gap:14px;">
+          <div style="font-size:1.8rem; line-height:1;">⚠️</div>
+          <div>
+            <h4 style="font-weight:800; color:#991b1b; font-size:1.05rem;">Quiet Gap Alert Detected (Pre-Chapter Early Warning)</h4>
+            <p style="color:#b91c1c; font-size:0.88rem; margin-top:2px;">
+              <strong>6 students</strong> (including Aarav Patel & Ananya Iyer) have latent gaps in <em>Class 7 Negative Integer Transposition</em>. Without a 10-minute intervention, they will fail next week's Linear Equations exam.
+            </p>
+          </div>
+        </div>
+        <button class="btn btn-danger btn-sm" onclick="alert('Sent 10-minute targeted Class 7 Integer Remediation Pack to 6 students!')">
+          Send Targeted Micro-Bridge
+        </button>
+      </div>
+
+      <!-- Cohort Mastery Heatmap -->
+      <div class="card" style="margin-bottom:24px;">
+        <div class="card-header">
+          <div>
+            <h4 class="card-title"><span>🗺</span> Class 8-B Live Micro-Concept Heatmap</h4>
+            <p style="font-size:0.82rem; color:#64748b; margin-top:2px;">Real-time mastery status across sub-concepts before summative testing.</p>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <span class="badge badge-success">Mastered</span>
+            <span class="badge badge-warning">In Progress</span>
+            <span class="badge badge-danger">Quiet Gap</span>
+          </div>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table class="heatmap-table">
+            <thead>
+              <tr>
+                <th>STUDENT (ROLL NO.)</th>
+                <th>CLASS 7 INTEGERS</th>
+                <th>EQUATION BALANCING</th>
+                <th>WORD PROBLEMS</th>
+                <th>NEGATIVE SIGNS</th>
+                <th>RISK STATUS</th>
+              </tr>
+            </thead>
+            <tbody id="cohort-heatmap-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Cohort Distribution Chart -->
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title"><span>📊</span> Class Cohort Distribution (42 Students)</h4>
+          </div>
+          <div style="padding:10px 0;">
+            <canvas id="cohort-bar-canvas" width="500" height="180"></canvas>
+          </div>
+          <p style="font-size:0.82rem; color:#64748b; text-align:center;">
+            Auto-clustering enables tailored instruction instead of standard lecture-and-leave.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title"><span>💬</span> Vernacular Parent WhatsApp Dispatch</h4>
+            <span class="badge badge-primary">Multilingual</span>
+          </div>
+          <div style="background:#f8fafc; padding:14px; border-radius:8px; border:1px solid var(--border); font-size:0.88rem; line-height:1.5;">
+            <div style="font-weight:700; color:#1e1b4b; margin-bottom:4px;">Draft Template (English / Hindi / Telugu):</div>
+            <p style="color:#475569;">
+              "Namaste Parents! In Class 8-B this week, we are mastering Linear Equations. 6 students have a small gap in Class 7 integer signs. Please encourage your child to do today's 5-minute VidyaSetu offline/online worksheet. - Maths Teacher"
+            </p>
+          </div>
+          <div style="margin-top:14px; display:flex; justify-content:flex-end;">
+            <button class="btn btn-secondary btn-sm" onclick="alert('Preview sent to teacher mobile for review.')">
+              Send via Teacher WhatsApp Web
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- TAB 4: ADAPTIVE SIMULATOR (Live Demo)      -->
+  <!-- ========================================== -->
+  <main id="tab-simulator" class="tab-content">
+    <div class="container">
+      <div style="text-align:center; max-width:760px; margin:0 auto 28px auto;">
+        <div class="badge badge-primary" style="margin-bottom:8px;">Live Engine Demonstration</div>
+        <h2 style="font-size:2rem; font-weight:800; color:#1e1b4b;">Experience How VidyaSetu Adapts in Real-Time</h2>
+        <p style="color:#64748b; font-size:0.95rem;">
+          Select different student personas below to observe how our Bayesian Knowledge Engine branches between <strong>Accelerating Fast Learners</strong> and <strong>Revisiting Foundations for Struggling Learners</strong>.
+        </p>
+      </div>
+
+      <!-- Student Persona Selector -->
+      <div style="display:flex; justify-content:center; gap:12px; margin-bottom:24px; flex-wrap:wrap;">
+        <button class="btn btn-secondary sim-student-btn" data-sim="studentA">
+          <span>⚡ Student A (Priya - Fast Learner)</span>
+        </button>
+        <button class="btn btn-secondary sim-student-btn active" data-sim="studentB">
+          <span>🎯 Student B (Rahul - Grade-Level)</span>
+        </button>
+        <button class="btn btn-secondary sim-student-btn" data-sim="studentC">
+          <span>🛡 Student C (Aarav - Latent Gap)</span>
+        </button>
+      </div>
+
+      <div class="grid-2">
+        <!-- Student Diagnostic Profile & System Action -->
+        <div class="card" id="sim-student-desc">
+          <!-- Populated dynamically via JS -->
+        </div>
+
+        <!-- Adaptive Learning Path Visualizer -->
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title"><span>🛤</span> Dynamic Adaptive Path</h4>
+            <span class="badge badge-success">Real-time Branching</span>
+          </div>
+          <div id="sim-adaptive-path" style="padding:10px 0;">
+            <!-- Populated dynamically via JS -->
+          </div>
+          <div style="padding:12px; background:#f8fafc; border-radius:8px; font-size:0.82rem; color:#64748b;">
+            Directly fulfills the Page 3 design specification: <em>"Where they stand ➔ How they learn ➔ What is next"</em>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic Graph: Adaptive vs One-Pace Curve (Replicating Page 2 of Hackathon PDF) -->
+      <div class="card" style="margin-top:24px;">
+        <div class="card-header">
+          <div>
+            <h4 class="card-title"><span>📈</span> Student Progress Over Time: Adaptive vs One-Pace</h4>
+            <p style="font-size:0.82rem; color:#64748b; margin-top:2px;">
+              Direct recreation of the Page 2 Problem Statement chart: showing how traditional pacing leaves gaps behind while VidyaSetu achieves mastery.
+            </p>
+          </div>
+        </div>
+        <div style="background:#0f172a; border-radius:12px; padding:20px;">
+          <canvas id="progress-chart-canvas" width="800" height="240" style="width:100%; height:240px; display:block;"></canvas>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- TAB 5: CODE KERNEL '26 SUBMISSION DECK     -->
+  <!-- ========================================== -->
+  <main id="tab-submission" class="tab-content">
+    <div class="container">
+      <div style="text-align:center; max-width:800px; margin:0 auto 30px auto;">
+        <div class="badge badge-primary" style="margin-bottom:8px;">Code Kernel '26 · Decode Round</div>
+        <h2 style="font-size:2rem; font-weight:800; color:#1e1b4b;">Comprehensive Submission & Pitch Deck</h2>
+        <p style="color:#64748b; font-size:0.95rem;">
+          In collaboration with <strong>Canvas Classes</strong> · Supported by <strong>MyStartupWave</strong> & <strong>Unstop</strong> · X-Kernel, GRIET Hyderabad
+        </p>
+      </div>
+
+      <!-- Accordion Pitch Slides -->
+      <div class="deck-card">
+        <div class="deck-header active">
+          <div style="font-weight:800; font-size:1.1rem; color:#1e1b4b;">
+            <span>01 · The Problem & Target Demographics</span>
+          </div>
+          <span style="font-size:1.2rem;">▾</span>
+        </div>
+        <div class="deck-body active">
+          <h4 style="color:#4f46e5; margin-bottom:8px;">Understanding the Quiet Gap in Indian Classes 6 to 10</h4>
+          <p style="color:#475569; font-size:0.92rem; margin-bottom:12px;">
+            In traditional Indian classrooms with 40 to 60 students per section, teachers are forced to teach at a single median pace to complete the board syllabus on schedule.
+          </p>
+          <ul style="color:#475569; font-size:0.9rem; padding-left:20px; line-height:1.7;">
+            <li><strong>Concepts build cumulatively:</strong> Missing fraction addition in Class 6 makes rational numbers impossible in Class 8, leading to board exam failure in Class 10.</li>
+            <li><strong>Summative lag:</strong> Chapter-end exams detect failure only after the teacher has already moved to the next topic.</li>
+            <li><strong>Coaching overload:</strong> Parents spend thousands on tuition centres which simply repeat the same rigid lectures without diagnosing individual root-cause gaps.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="deck-card">
+        <div class="deck-header">
+          <div style="font-weight:800; font-size:1.1rem; color:#1e1b4b;">
+            <span>02 · The Solution: Adapting Across Learn, Solve, Test</span>
+          </div>
+          <span style="font-size:1.2rem;">▾</span>
+        </div>
+        <div class="deck-body">
+          <h4 style="color:#4f46e5; margin-bottom:8px;">Full-Lifecycle Adaptation, Not Just Random Quizzes</h4>
+          <p style="color:#475569; font-size:0.92rem; margin-bottom:12px;">
+            VidyaSetu solves the hackathon challenge by adapting across all three fundamental parts of learning:
+          </p>
+          <div class="grid-3" style="margin-top:14px;">
+            <div style="padding:14px; background:#f8fafc; border-radius:8px; border:1px solid var(--border);">
+              <strong>1. LEARN:</strong> Real-world Indian analogies (Taraazu), dual English/Hinglish/Telugu explanations, and automated 3-minute prerequisite flashback bridges.
+            </div>
+            <div style="padding:14px; background:#f8fafc; border-radius:8px; border:1px solid var(--border);">
+              <strong>2. SOLVE:</strong> Dynamic difficulty scaling (Foundational, Standard, Olympiad) + 3-tier scaffolded Hint Ladders + root-cause misconception diagnosis.
+            </div>
+            <div style="padding:14px; background:#f8fafc; border-radius:8px; border:1px solid var(--border);">
+              <strong>3. TEST:</strong> Low-stress, 5-minute continuous diagnostic pulses that continuously calibrate the student's Bayesian Knowledge Tracing matrix.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="deck-card">
+        <div class="deck-header">
+          <div style="font-weight:800; font-size:1.1rem; color:#1e1b4b;">
+            <span>03 · Built for Indian Classrooms & Empowering Teachers</span>
+          </div>
+          <span style="font-size:1.2rem;">▾</span>
+        </div>
+        <div class="deck-body">
+          <h4 style="color:#4f46e5; margin-bottom:8px;">Addressing Real Indian Ground Realities</h4>
+          <div class="grid-2" style="margin-top:12px;">
+            <div>
+              <strong style="color:#1e1b4b;">Empowering Teachers:</strong>
+              <p style="font-size:0.88rem; color:#475569; margin-top:4px;">
+                Instead of replacing teachers with AI bots, VidyaSetu acts as the teacher's radar: showing live classroom heatmaps, quiet gap warnings 2 weeks before exams, and generating 1-click printable worksheets.
+              </p>
+            </div>
+            <div>
+              <strong style="color:#1e1b4b;">Infrastructure Reality:</strong>
+              <p style="font-size:0.88rem; color:#475569; margin-top:4px;">
+                Works in 2G/low-bandwidth mode (&lt;80KB load), supports shared family smartphones in the evening, and provides print-ready offline worksheets with QR codes for zero-screen classrooms.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="deck-card">
+        <div class="deck-header">
+          <div style="font-weight:800; font-size:1.1rem; color:#1e1b4b;">
+            <span>04 · Technical Architecture & Bayesian Knowledge Engine</span>
+          </div>
+          <span style="font-size:1.2rem;">▾</span>
+        </div>
+        <div class="deck-body">
+          <h4 style="color:#4f46e5; margin-bottom:8px;">Lightweight, Scalable Client-First Architecture</h4>
+          <p style="color:#475569; font-size:0.92rem; margin-bottom:12px;">
+            Our algorithm models student comprehension using an extended Bayesian Knowledge Tracing (BKT) graph mapped to the NCERT curriculum ontology:
+          </p>
+          <div style="background:#0f172a; color:#f8fafc; padding:16px; border-radius:8px; font-family:monospace; font-size:0.85rem; line-height:1.6;">
+            P(L_t) = P(L_{t-1}) * (1 - P(Slip)) / [ P(L_{t-1}) * (1 - P(Slip)) + (1 - P(L_{t-1})) * P(Guess) ]<br>
+            P(Mastery) = P(L_t) + (1 - P(L_t)) * P(Transit)<br>
+            Decision Tree: If P(Mastery) &lt; 0.60 ➔ Route to Prerequisite Micro-Bridge<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If P(Mastery) &gt; 0.85 ➔ Route to Olympiad Challenge Tier
+          </div>
+        </div>
+      </div>
+
+      <div class="deck-card">
+        <div class="deck-header">
+          <div style="font-weight:800; font-size:1.1rem; color:#1e1b4b;">
+            <span>05 · Three Rounds, One Idea (Hackathon Roadmap)</span>
+          </div>
+          <span style="font-size:1.2rem;">▾</span>
+        </div>
+        <div class="deck-body">
+          <div class="grid-3">
+            <div style="background:#ecfdf5; padding:16px; border-radius:8px; border:1px solid #a7f3d0;">
+              <span class="badge badge-success">Round 1: DECODE (Current)</span>
+              <h5 style="margin-top:8px; font-weight:800; color:#065f46;">21 to 24 October 2026</h5>
+              <p style="font-size:0.85rem; color:#047857; margin-top:4px;">
+                Problem formulation, 3-part Learn-Solve-Test architecture, teacher empowerment workflow, and working prototype.
+              </p>
+            </div>
+            <div style="background:#eff6ff; padding:16px; border-radius:8px; border:1px solid #bfdbfe;">
+              <span class="badge badge-primary">Round 2: BUILD</span>
+              <h5 style="margin-top:8px; font-weight:800; color:#1e40af;">25 to 29 October 2026</h5>
+              <p style="font-size:0.85rem; color:#1d4ed8; margin-top:4px;">
+                Full syllabus ontology expansion across Classes 6–10 Mathematics & Science, WhatsApp Business Cloud integration, and offline PWA.
+              </p>
+            </div>
+            <div style="background:#f5f3ff; padding:16px; border-radius:8px; border:1px solid #ddd6fe;">
+              <span class="badge badge-primary">Round 3: PROVE</span>
+              <h5 style="margin-top:8px; font-weight:800; color:#5b21b6;">30 to 31 October 2026</h5>
+              <p style="font-size:0.85rem; color:#6d28d9; margin-top:4px;">
+                Live classroom pilot with Canvas Classes students in Hyderabad, measuring gap closure rate and teacher time savings.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 1-Click Differentiated Grouping Modal -->
+  <div id="grouping-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:200; padding:20px; box-sizing:border-box;">
+    <div style="background:#ffffff; max-width:650px; margin:40px auto; border-radius:var(--radius-lg); padding:28px; box-shadow:var(--shadow-lg);">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <h3 style="font-weight:800; color:#1e1b4b; font-size:1.3rem;">👥 Auto-Differentiated Cohort Groups (Class 8-B)</h3>
+        <button id="btn-close-grouping-modal" style="background:none; border:none; font-size:1.3rem; cursor:pointer;">✕</button>
+      </div>
+      <p style="color:#64748b; font-size:0.88rem; margin-bottom:18px;">
+        VidyaSetu automatically grouped your 42 students into 3 actionable tiers based on this morning's diagnostic pulse:
+      </p>
+
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="background:#fef2f2; border-left:4px solid #ef4444; padding:12px; border-radius:6px;">
+          <strong style="color:#991b1b;">Group 1: Foundational Bridge (6 Students)</strong>
+          <div style="font-size:0.82rem; color:#b91c1c; margin-top:2px;">Aarav Patel, Ananya Iyer, +4 others · Action: 10-min visual balance scale & Class 7 negative integer recap.</div>
+        </div>
+        <div style="background:#eff6ff; border-left:4px solid #3b82f6; padding:12px; border-radius:6px;">
+          <strong style="color:#1e40af;">Group 2: Core NCERT Syllabus (30 Students)</strong>
+          <div style="font-size:0.82rem; color:#1d4ed8; margin-top:2px;">Rahul Verma, Sneha Reddy, Mohammed Zeeshan, +27 others · Action: Standard Chapter 2 exercises with Hint Ladder.</div>
+        </div>
+        <div style="background:#ecfdf5; border-left:4px solid #10b981; padding:12px; border-radius:6px;">
+          <strong style="color:#065f46;">Group 3: Olympiad / HOTS Acceleration (6 Students)</strong>
+          <div style="font-size:0.82rem; color:#047857; margin-top:2px;">Priya Sharma, Vikram Malhotra, +4 others · Action: Distributive bracket equations & multi-step word problems.</div>
+        </div>
+      </div>
+
+      <div style="margin-top:20px; display:flex; justify-content:flex-end; gap:10px;">
+        <button class="btn btn-secondary btn-sm" onclick="document.getElementById('grouping-modal').style.display='none'">Close</button>
+        <button class="btn btn-primary btn-sm" onclick="alert('Assigned 3 tailored worksheet tracks to students!'); document.getElementById('grouping-modal').style.display='none'">Confirm & Assign Tasks</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dedicated Print Container for Offline Worksheets -->
+  <div id="worksheet-print-area">
+    <div style="border-bottom:2px solid #000; padding-bottom:10px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center;">
+      <div>
+        <h2 style="font-size:1.3rem; font-weight:800;">VidyaSetu Offline Practice Sheet</h2>
+        <div style="font-size:0.9rem;">Class 8-B · Mathematics: Linear Equations in One Variable</div>
+      </div>
+      <div style="text-align:right; font-size:0.85rem;">
+        <div>Name: ____________________</div>
+        <div>Roll No: _______ Date: ______</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Tier 1: Foundational Bridge (Show working on paper)</h3>
+      <ol style="padding-left:20px; font-size:0.95rem; line-height:2.2;">
+        <li>Solve for x: x + 7 = 15</li>
+        <li>Solve for y: y - 8 = 12</li>
+        <li>Solve for a: 3a = 21</li>
+      </ol>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Tier 2: Standard NCERT Exercises</h3>
+      <ol start="4" style="padding-left:20px; font-size:0.95rem; line-height:2.2;">
+        <li>Solve for x: 2x + 5 = 17</li>
+        <li>Solve for z: 4z - 7 = 21</li>
+        <li>The perimeter of a rectangle is 24 cm. If length is 4 cm more than breadth (x), find x.</li>
+      </ol>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Tier 3: Challenge Question</h3>
+      <ol start="7" style="padding-left:20px; font-size:0.95rem; line-height:2.2;">
+        <li>Solve for x: 3(x - 2) = 2(x + 5)</li>
+      </ol>
+    </div>
+
+    <div style="border-top:1px dashed #666; padding-top:10px; font-size:0.8rem; display:flex; justify-content:space-between; align-items:center;">
+      <div>Scan QR Code at school computer lab or with teacher's phone for step-by-step Hindi/Telugu video explanation.</div>
+      <div style="font-weight:700; border:1px solid #000; padding:4px 8px;">[ QR CODE KEY ]</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+        <div>
+          <strong>VidyaSetu (विद्यासेतु)</strong> · Adaptive Learning Platform for Indian Classes 6 to 10
+        </div>
+        <div>
+          Code Kernel '26 Problem Statement · In collaboration with <strong>Canvas Classes</strong>
+        </div>
+      </div>
+      <div style="margin-top:8px; font-size:0.78rem; color:#94a3b8;">
+        X-Kernel, GRIET Hyderabad · Supported by MyStartupWave & Unstop · Instagram: @xkernel_griet · LinkedIn: @x-kernel
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
